@@ -60,6 +60,11 @@ class Product extends Model
         return $this->belongsTo(ProductCategory::class, 'category_id');
     }
 
+    public function company()
+    {
+        return $this->belongsTo(ProductCompany::class, 'company_id');
+    }
+
     public function details()
     {
         return $this->hasMany(ProductDetail::class, 'product_id');

@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('full_name')->comment('全称');
             $table->unsignedInteger('category_id')->comment('分类ID');
             $table->foreign('category_id')->references('id')->on('product_categories')->onDelete('cascade');
+            $table->unsignedInteger('company_id')->nullable()->comment('公司ID');
             $table->text('description')->nullable()->comment('描述');
             $table->unsignedInteger('raise')->comment('募集状态');
 

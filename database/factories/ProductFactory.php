@@ -2,6 +2,7 @@
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductCompany;
 use Faker\Generator as Faker;
 
 /*
@@ -20,10 +21,13 @@ $factory->define(Product::class, function (Faker $faker) {
     $name = $faker->sentence;
     $category_ids = ProductCategory::where('status', true)->get()->pluck('id')->toArray();
 
+    $company_ids = ProductCompany::where('status', true)->get()->pluck('id')->toArray();
+
     return [
         'name' => $name,
         'full_name' => $name,
         'category_id' => $faker->randomElement($category_ids),
+        'company_id' => $faker->randomElement($company_ids),
         'description' => $faker->sentence,
         'raise' => $faker->randomElement(array_keys(Product::$raiseMap)),
         'profit' => $faker->randomElement(array_keys(Product::$profitMap)),
