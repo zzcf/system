@@ -15,6 +15,8 @@ class CreateArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('category_id')->comment('分类ID');
+            $table->foreign('category_id')->references('id')->on('article_categories')->onDelete('cascade');
             $table->string('title')->comment('标题');
             $table->string('cover')->comment('封面');
             $table->text('description')->nullable()->comment('描述');
