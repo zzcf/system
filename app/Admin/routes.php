@@ -23,4 +23,5 @@ Route::group([
     $router->resource('feedback', 'FeedbackController', ['only' => ['index', 'show', 'destroy']]);
 
     $router->resource('articleCategories', 'ArticleCategoriesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
+    $router->resource('articles', 'ArticlesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
 });
