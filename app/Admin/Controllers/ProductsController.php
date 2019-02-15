@@ -77,8 +77,8 @@ class ProductsController extends Controller
             return ($this->term_max_value ? $value.'个月~'.$this->term_max_value : $value).'个月';
         });
         $grid->raise('募集状态')->display(function ($value) {
-            $color = $value == 1 ? 'success' : 'danger';
-            return '<span class="text-'.$color.'">'.Product::$raiseMap[$value].'</span>';
+            $colors = [1 => 'success', 0 => 'danger'];
+            return '<span class="text-'.$colors[$value].'">'.Product::$raiseMap[$value].'</span>';
         });
         $grid->status('状态')->switch([
             'on'  => ['value' => 1, 'text' => '启用', 'color' => 'primary'],
@@ -128,7 +128,7 @@ class ProductsController extends Controller
         $form->tab('基本', function ($form) use ($categories) {
 
             $form->text('name', '名称')->rules('required');
-            $form->text('full_name', '全称')->rules('required');;
+            $form->text('full_name', '全称')->rules('required');
             $form->select('category_id', '所属分类')->options($categories)->load('company', 'productCategories/api/companies')->rules('required');;
             $form->select('company', '所属公司')->rules('nullable');
             $form->textarea('description', '描述')->rules('nullable');

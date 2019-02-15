@@ -31,7 +31,7 @@ class CreateProductCompaniesTable extends Migration
             $table->string('representative')->nullable()->comment('法人代表');
             $table->string('stock_holder')->nullable()->comment('大股东');
             $table->boolean('is_list')->default(true)->nullable()->comment('是否上市');
-            $table->string('content')->nullable()->comment('详情介绍');
+            $table->text('content')->nullable()->comment('详情介绍');
 
             $table->boolean('status')->default(true)->comment('启用状态 ');
             $table->integer('order')->default(999)->comment('排序');
