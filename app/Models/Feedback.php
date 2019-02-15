@@ -9,4 +9,9 @@ class Feedback extends Model
     protected $fillable = [
         'name', 'phone', 'content', 'source', 'source_url', 'source_ip'
     ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

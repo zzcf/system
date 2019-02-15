@@ -21,5 +21,7 @@ Route::group([
 
     $router->resource('productCompanies', 'ProductCompaniesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
 
+    $router->resource('feedback', 'FeedbackController', ['only' => ['index', 'show', 'destroy']]);
+
     $router->get('productCategories/api/companies', 'ProductCategoriesController@apiGetCompanies')->name('productCategories.api.companies');
 });
