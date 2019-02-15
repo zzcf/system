@@ -9,6 +9,7 @@ use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
+use Illuminate\Http\Request;
 
 class ProductCategoriesController extends Controller
 {
@@ -107,8 +108,8 @@ class ProductCategoriesController extends Controller
     {
         $form = new Form(new ProductCategory);
 
-        $form->text('title', '标题');
-        $form->text('name', '名称');
+        $form->text('title', '标题')->rules('required');
+        $form->text('name', '名称')->rules('required');
         $form->switch('status', '状态')->default(1)->states([
             'on'  => ['value' => 1, 'text' => '启用', 'color' => 'primary'],
             'off' => ['value' => 0, 'text' => '禁用', 'color' => 'default'],
@@ -126,5 +127,12 @@ class ProductCategoriesController extends Controller
         });
 
         return $form;
+    }
+
+    public function apiGetCompanies(Request $request)
+    {
+        $category_id = $request->get('q');
+
+        return ProductCategory::companies()->where('category_id', $category_id)->get(['id', DB::raw('name as text')]);
     }
 }

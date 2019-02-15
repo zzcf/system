@@ -16,4 +16,8 @@ Route::group([
     $router->resource('users', 'UsersController', ['only' => ['index']]);
 
     $router->resource('productCategories', 'ProductCategoriesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
+
+    $router->resource('products', 'ProductsController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
+
+    $router->get('productCategories/api/companies', 'ProductCategoriesController@apiGetCompanies')->name('productCategories.api.companies');
 });
