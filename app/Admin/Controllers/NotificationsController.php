@@ -77,10 +77,9 @@ class NotificationsController extends Controller
         $grid->disableCreateButton();
 
         $grid->actions(function ($actions) {
-            if ($actions->row['read_at']) {
-                $actions->disableView();
-            }
             $actions->disableEdit();
+            $actions->disableView();
+            $actions->prepend('<a href="'.admin_base_path('notifications/'.$actions->getKey()).'" no-pjax><i class="fa fa-eye"></i></a>');
         });
 
         return $grid;

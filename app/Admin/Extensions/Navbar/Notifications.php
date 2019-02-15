@@ -21,7 +21,7 @@ class Notifications
                     case 'feedback_created' :
                         $notificationMenu .= <<<HTML
 <li>
-    <a href="{$link}">
+    <a href="{$link}" no-pjax>
         <i class="fa fa-commenting text-red"></i> 您有一条【{$notification->data['feedback_name']}】的留言，请注意查看！
     </a>
 </li>
@@ -32,7 +32,7 @@ HTML;
             }
         }else {
             $notificationMenu = <<<HTML
-<li class="text-center text-muted" style="margin-top: 20px;">暂时没有消息通知！</li>
+<li class="text-center text-muted" style="margin-top: 30px;">暂时没有消息通知！</li>
 HTML;
 
         }
@@ -47,7 +47,7 @@ HTML;
         <span class="label label-warning">{$notificationCount}</span>
     </a>
     <ul class="dropdown-menu">
-        <li class="header">{$notificationCount}条未读通知</li>
+        <li class="header"><b>{$notificationCount}</b> 条未读通知</li>
         <li>
             <ul class="menu">
                 {$notificationMenu}
