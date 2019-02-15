@@ -16,12 +16,11 @@ Route::group([
     $router->resource('users', 'UsersController', ['only' => ['index']]);
 
     $router->resource('productCategories', 'ProductCategoriesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
-
     $router->resource('products', 'ProductsController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
-
     $router->resource('productCompanies', 'ProductCompaniesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
+    $router->get('productCategories/api/companies', 'ProductCategoriesController@apiGetCompanies')->name('productCategories.api.companies');
 
     $router->resource('feedback', 'FeedbackController', ['only' => ['index', 'show', 'destroy']]);
 
-    $router->get('productCategories/api/companies', 'ProductCategoriesController@apiGetCompanies')->name('productCategories.api.companies');
+    $router->resource('articleCategories', 'ArticleCategoriesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
 });
