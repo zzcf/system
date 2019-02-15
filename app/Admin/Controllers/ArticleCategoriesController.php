@@ -66,6 +66,8 @@ class ArticleCategoriesController extends Controller
     {
         $grid = new Grid(new ArticleCateGory);
 
+        $grid->model()->orderBy('order', 'asc')->orderBy('created_at', 'desc');
+
         $grid->id('ID');
         $grid->order('排序')->editable();
         $grid->title('标题');

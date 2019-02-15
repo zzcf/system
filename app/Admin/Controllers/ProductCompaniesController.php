@@ -67,7 +67,10 @@ class ProductCompaniesController extends Controller
     {
         $grid = new Grid(new ProductCompany);
 
+        $grid->model()->orderBy('order', 'asc')->orderBy('created_at', 'desc');
+
         $grid->id('ID');
+        $grid->order('排序')->editable();
         $grid->column('category.title', '分类')->label();
         $grid->name('名称')->display(function ($value) {
             $logo = $this->logo ? '<img src="'.$this->logo.'" style="max-height:32px;margin-right: 8px;" class="img img-thumbnail">' : '';

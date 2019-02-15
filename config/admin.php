@@ -112,7 +112,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => Encore\Admin\Auth\Database\Administrator::class,
+                'model'  => \App\Models\AdminUser::class,
             ],
         ],
     ],
@@ -227,7 +227,7 @@ return [
     |    "skin-red", "skin-red-light", "skin-black", "skin-black-light".
     |
     */
-    'skin' => 'skin-red',
+    'skin' => 'skin-green',
 
     /*
     |--------------------------------------------------------------------------

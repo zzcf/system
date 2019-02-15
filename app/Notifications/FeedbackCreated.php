@@ -42,6 +42,7 @@ class FeedbackCreated extends Notification
             'feedback_id' => $this->feedback->id,
             'feedback_name' => $this->feedback->name,
             'feedback_phone' => $this->feedback->phone,
+            'link' => admin_base_path('feedback/'. $this->feedback->id),
         ];
     }
 }

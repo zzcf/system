@@ -52,6 +52,8 @@ class FeedbackController extends Controller
     {
         $grid = new Grid(new Feedback);
 
+        $grid->model()->orderBy('created_at', 'desc');
+
         $grid->id('ID');
         $grid->name('称呼');
         $grid->phone('手机号码');

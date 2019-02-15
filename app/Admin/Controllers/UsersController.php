@@ -37,6 +37,8 @@ class UsersController extends Controller
     {
         $grid = new Grid(new User);
 
+        $grid->model()->orderBy('created_at', 'desc');
+
         $grid->id('ID');
         $grid->name('用户')->display(function ($value) {
             $avatar = '<img src="'.$this->avatar.'" style="max-height:32px;margin-right: 8px;" class="img img-thumbnail">';

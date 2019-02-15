@@ -24,4 +24,6 @@ Route::group([
 
     $router->resource('articleCategories', 'ArticleCategoriesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
     $router->resource('articles', 'ArticlesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
+
+    $router->resource('notifications', 'NotificationsController', ['only' => ['index', 'show', 'destroy']]);
 });
