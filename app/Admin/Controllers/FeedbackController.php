@@ -60,7 +60,10 @@ class FeedbackController extends Controller
         $grid->column('product.name', '咨询产品');
         $grid->source('来源');
         $grid->source_url('来源网址')->link();
-        $grid->source_ip('来源IP')->label();
+        $grid->source_ip('来源IP')->display(function ($ip) {
+            $ipData = geoip($ip)->toArray();
+            return "<span class='label label-success'  data-toggle='tooltip' title='{$this->location}'>{$ip}</span>";
+        });
         $grid->created_at('创建时间');
 
         $grid->disableCreateButton();
@@ -98,14 +101,17 @@ class FeedbackController extends Controller
 
             $product->panel()
                 ->tools(function ($tools) {
+                    $tools->disableList();
                     $tools->disableEdit();
+                    $tools->disableDelete();
                 });
         });
         $show->content('内容');
         $show->source('来源');
         $show->source_url('来源网址')->link();
         $show->source_ip('来源IP')->unescape()->as(function ($ip) {
-            return $ip.' <a class="label label-primary" href="http://www.ip138.com/ips138.asp?ip='.$ip.'" target="_blank">查询</a>';
+            $ipData = geoip($ip)->toArray();
+            return "{$ip} <span class='label label-success'>{$this->location}</span>";
         });;
         $show->created_at('创建时间');
 

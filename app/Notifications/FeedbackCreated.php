@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use App\Models\Feedback;
 
-class FeedbackCreated extends Notification
+class FeedbackCreated extends Notification implements ShouldQueue
 {
     use Queueable;
 

@@ -14,4 +14,10 @@ class Feedback extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function getLocationAttribute()
+    {
+        $ipData = geoip($this->source_ip)->toArray();
+        return $ipData['state_name'].'-'.$ipData['city'];
+    }
 }
