@@ -28,6 +28,15 @@ class Notifications
 HTML;
 
                         break;
+                    case 'user_created' :
+                        $notificationMenu .= <<<HTML
+<li>
+    <a href="{$link}" no-pjax>
+        <i class="fa fa-user text-green"></i> 有新用户【{$notification->data['user_name']}】注册，请注意查看！
+    </a>
+</li>
+HTML;
+                        break;
                 }
             }
         }else {

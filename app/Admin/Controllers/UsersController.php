@@ -28,6 +28,14 @@ class UsersController extends Controller
             ->body($this->grid());
     }
 
+    public function show($id, Content $content)
+    {
+        return $content
+            ->header('用户')
+            ->description('详细')
+            ->body($this->detail($id));
+    }
+
     /**
      * Make a grid builder.
      *
@@ -50,7 +58,10 @@ class UsersController extends Controller
 
         $grid->disableCreateButton();
 
-        $grid->disableActions();
+        $grid->actions(function ($actions) {
+            $actions->disableEdit();
+            $actions->disableDelete();
+        });
 
         $grid->tools(function ($tools) {
             // 禁用批量删除按钮
@@ -71,5 +82,28 @@ class UsersController extends Controller
 
 
         return $grid;
+    }
+
+    protected function detail($id)
+    {
+        $show = new Show(User::findOrFail($id));
+
+        $show->avatar('头像')->unescape()->as(function ($avatar) {
+            return "<img src='{$avatar}' width='50' />";
+        });
+        $show->name('姓名');
+        $show->nickname('昵称');
+        $show->phone('手机号码');
+        $show->email('邮箱地址');
+        $show->source('来源');
+        $show->created_at('注册时间');
+
+        $show->panel()
+            ->tools(function ($tools) {
+                $tools->disableEdit();
+                $tools->disableDelete();
+            });
+
+        return $show;
     }
 }

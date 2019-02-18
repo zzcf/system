@@ -25,3 +25,6 @@ Encore\Admin\Form::forget(['map', 'editor']);
 Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
     $navbar->right(new \App\Admin\Extensions\Navbar\Notifications());
 });
+
+// 添加echarts
+Admin::js('vendor/laravel-admin/echarts/echarts.simple.min.js');

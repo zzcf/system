@@ -13,7 +13,7 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
 
-    $router->resource('users', 'UsersController', ['only' => ['index']]);
+    $router->resource('users', 'UsersController', ['only' => ['index', 'show']]);
 
     $router->resource('productCategories', 'ProductCategoriesController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);
     $router->resource('products', 'ProductsController', ['only' => ['index', 'create', 'edit', 'store', 'update', 'destroy']]);

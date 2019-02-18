@@ -62,6 +62,9 @@ class NotificationsController extends Controller
                 case 'feedback_created' :
                     $notificationTitle = "您有一条【{$this->data['feedback_name']}】的留言，请注意查看！";
                     break;
+                case 'user_created' :
+                    $notificationTitle = "有新用户【{$this->data['user_name']}】注册，请注意查看！";
+                    break;
             }
             return $notificationTitle;
         });

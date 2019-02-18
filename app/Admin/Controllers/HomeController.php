@@ -9,7 +9,6 @@ use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
-use Encore\Admin\Controllers\Dashboard;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
@@ -54,7 +53,6 @@ class HomeController extends Controller
 
         $chartId = 'user-chart';
 
-        Admin::js('vendor/laravel-admin/echarts/echarts.simple.min.js');
         $script = <<<EOT
     var userChart = echarts.init(document.getElementById('{$chartId}'));
 
@@ -68,7 +66,25 @@ class HomeController extends Controller
         },
         series: [{
             data: {$userOption['series']},
-            type: 'line'
+            type: 'line',
+            itemStyle:{ 
+                normal:{ 
+                    color: "#00a65a" 
+                } //坐标圆点的颜色 
+            }, 
+            lineStyle:{ 
+                normal:{ 
+                    width:3, 
+                    color: "#00a65a" 
+                }//线条的颜色及宽度 
+            }, 
+            label: {//线条上的数字提示信息 
+                normal: { 
+                    show: true, 
+                    position: 'top' 
+                } 
+            },
+            smooth: true,
         }]
     };
 
